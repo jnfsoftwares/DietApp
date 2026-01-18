@@ -20,7 +20,15 @@
     </script>
     <script src="applab/applab-api.js"></script>
     <script src="https://www.google.com/jsapi"></script>
-    <script src="code.js"></script>
+    <script>
+      // Wait for applab-api to initialize before loading code.js
+      document.addEventListener('DOMContentLoaded', function() {
+        // Create script and load code.js
+        var script = document.createElement('script');
+        script.src = 'code.js';
+        document.head.appendChild(script);
+      });
+    </script>
     <link rel="stylesheet" href="applab/applab.css">
     <link rel="stylesheet" href="style.css">
   </head>
