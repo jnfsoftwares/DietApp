@@ -30,3 +30,24 @@ The model uses if-else rules derived from data patterns:
 
 ### Usage
 The prediction is triggered via the "Predict" button in the app, using the `getPrediction` function in `applab-shim.js`. No additional setup required.
+
+## Privacy Policy
+
+DietApp respects your privacy. The app operates entirely offline and does not collect, store, or transmit any personal information. All processing happens locally on your device.
+
+For more details, see our [Privacy Policy](privacy.html).
+
+## Android App
+
+An Android app wrapper is available in the `AndroidApp/` directory. It loads the web app from GitHub Pages and provides a native mobile experience.
+
+### Building the APK
+1. Ensure you have Android SDK and JDK 17 installed.
+2. Navigate to `AndroidApp/` directory.
+3. Run `./gradlew assembleDebug` to build the debug APK.
+4. The APK will be generated in `AndroidApp/app/build/outputs/apk/debug/`.
+
+### Publishing to Play Store
+- The app is configured for API level 34 (Android 14).
+- Update version codes and names in `build.gradle` before publishing.
+- Ensure all required assets (icons, screenshots) are prepared for Play Store submission.
