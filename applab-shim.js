@@ -69,13 +69,34 @@ function addPair(obj, key, value) {
   obj[key] = value;
 }
 
-// getPrediction - Mock prediction function
+// getPrediction - Local ML prediction using heuristic rules based on survey data
 function getPrediction(modelName, modelId, data, callback) {
   console.log('getPrediction called:', modelName, modelId, data);
-  // Mock response
+  
+  // Simple heuristic based on patterns from Diet Data Survey.csv
+  var prediction = 'Normal Healthy Food (Roti, Daal, etc)'; // Default
+  
+  var oldDiet = data['Whatwasyourolddiet'];
+  var activity = data['Howactivewereyouperweekbeforethediet'];
+  var vegetarian = data['Areyouavegetarianornot'];
+  var months = parseFloat(data['Inhowmanymonthsdidyouloseyourweight']) || 0;
+  var originalWeight = parseFloat(data['WhatwasyouroriginalweightinKg']) || 0;
+  
+  // Extended rules based on data analysis
+  if (oldDiet === 'Unhealthy [ Oily, Cheese, Pizza, Cold Drinks, Chips ]' && activity === 'Less than 30 minutes') {
+    prediction = 'Keto';
+  } else if (vegetarian === 'Vegetarian') {
+    prediction = 'Salads and Exercise';
+  } else if (months > 6 && originalWeight > 80) {
+    prediction = 'Salads and Exercise';
+  } else if (activity === 'More than 2 hours per week' && oldDiet === 'Healthy [Roti, Rice, Vegetables, Pulses(Daal)]') {
+    prediction = 'Normal Healthy Food (Roti, Daal, etc)';
+  }
+  
+  // Simulate async for consistency
   setTimeout(function() {
-    callback('Prediction result');
-  }, 500);
+    callback(prediction);
+  }, 100);
 }
 
 // Make functions global
