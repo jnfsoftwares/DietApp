@@ -11,10 +11,16 @@
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script>
       function setExportConfig(config) { window.EXPORT_OPTIONS = config; }
+      // Set default config if CORS request fails
+      window.EXPORT_OPTIONS = window.EXPORT_OPTIONS || {
+        'channel': 'fc9ffce3-91a8-46a5-b829-2152ca016936',
+        'appWidth': 320,
+        'appHeight': 450
+      };
     </script>
-    <script src="https://studio.code.org/projects/applab/fc9ffce3-91a8-46a5-b829-2152ca016936/export_config?script_call=setExportConfig"></script>
     <script src="applab/applab-api.js"></script>
     <script src="https://www.google.com/jsapi"></script>
+    <script src="code.js"></script>
     <link rel="stylesheet" href="applab/applab.css">
     <link rel="stylesheet" href="style.css">
   </head>
