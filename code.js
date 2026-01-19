@@ -18,3 +18,15 @@ onEvent("button1", "click", function( ) {
 	console.log("button1 clicked!");
 	setScreen("screen2");
 });
+onEvent("button5", "click", function(event) {
+	console.log("button5 clicked!");
+	setScreen("screen3");
+});
+onEvent("button3", "click", function(event) {
+	console.log("button3 clicked!");
+	setScreen("screen4");
+});
+onEvent("screen4", "click", function(event) {
+	console.log("button4 clicked!");
+	setScreen("screen5");
+});
