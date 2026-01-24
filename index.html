@@ -3,19 +3,50 @@
   <head>
     <title>DietDNA</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="preload" href="applab/fa-brands-400.woff2" as="font">
     <link rel="preload" href="applab/fa-solid-900.woff2" as="font">
     <link rel="preload" href="applab/fa-regular-400.woff2" as="font">
     <link rel="preload" href="applab/fa-v4compatibility.woff2" as="font">
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Scale entire app to fill the viewport */
+      #divApplab {
+        width: 320px;
+        height: 450px;
+        transform-origin: center;
+        transform: scale(
+          min(
+            calc(100vw / 320),
+            calc(100vh / 450)
+          )
+        );
+      }
+      .screen {
+        width: 320px !important;
+        height: 450px !important;
+      }
+    </style>
     <script>
       function setExportConfig(config) { window.EXPORT_OPTIONS = config; }
             // Set default config if CORS request fails
       window.EXPORT_OPTIONS = window.EXPORT_OPTIONS || {
         'channel': 'fc9ffce3-91a8-46a5-b829-2152ca016936',
-        'appWidth': 320,
-        'appHeight': 450
+        'appWidth': '100vw',
+        'appHeight': '100vh'
       };
     </script>
     <script src="applab-shim.js"></script>
